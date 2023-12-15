@@ -5,24 +5,26 @@ import { useParams } from 'react-router-dom';
 
 export default function City() {
 
-    const { city_id } = useParams();
+    /* const { city_id } = useParams();
 
-  // Access the CommentContext to get the city_id
-  //const { city_id } = useContext(CommentContext);
-
-  useEffect(() => {
-    // Log the city_id from the route parameters
-    console.log('City ID from route parameters:', city_id);
-
-    // Log the city_id from the CommentContext
-    //console.log('City ID from CommentContext:', contextCityId);
-
-    // Your city-related logic goes here
-  }, [city_id]);
-
+    const params = useParams();
+    const [cityData, setCityData] = useState(null);
+    
+    //whenever the id changes the useEffect need to be updated
     return (
-        <div>
+      <>
+      {cityData ? (
+          <>
+            <City id={cityData.id} name={cityData.name} country={cityData.country}
+            currency={cityData.currency} timezone={cityData.timezone} language={cityData.language} culture1={cityData.culture1}
+            culture2={cityData.culture2}
+            />
+            <ForeCastCards cityName={cityData.name}/>
+            <BestPlaces destinations={cityData.destinations}/>
+            <BestDishes dishes={cityData.dishes}/>
             <Comments city_id={city_id} />
-        </div>
-    )
+          </>
+        ) : <h2>Loading...</h2>}
+      </>
+    ) */
 }

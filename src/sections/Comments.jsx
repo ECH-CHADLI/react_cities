@@ -12,19 +12,12 @@ const Comments = ({ city_id }) => {
   const [submitted, setSubmitted] = React.useState(false);
   const [showReply, setShowReply] = React.useState(false);
 
-  /* useEffect(() => {
-    const fetchComments = async() => {
-        try{
-            const response = await axios.get(`/api/comments/${cityId}`);
-            setComment(response.data);
-        }catch(err) {
-            console.error('Error fetching comments: ', err);
-        } 
-    }
-    fetchComments();
-  }, [cityId]); */
+  
+  /* const {showingComments} = useContext(CommentContext);
 
-  const {comments} = useContext(CommentContext);
+  useEffect(() => {
+    showingComments(city_id);
+  }, []); */
 
   return (
       <div>

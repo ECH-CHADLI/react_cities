@@ -502,7 +502,7 @@ const cities = [
   
 ];
 
-/* createServer({
+createServer({
   models: {
     city: Model,
   },
@@ -514,13 +514,20 @@ const cities = [
   routes() {
     this.namespace = 'api';
 
-    this.get('/cities', (schema) => {
+    this.get('/cities', (schema, request) => {
       return schema.cities.all();
     });
 
-    this.get('/cities/:id', (schema, request) => {
-      const id = request.params.id;
-      return schema.cities.find(id);
+    this.get('/cities/:name', (schema, request) => {
+      const name = request.params.name;
+      return schema.cities.findBy({name});
     });
+
+     // Allow OpenWeatherMap API request to be forwarded to the actual API
+     this.passthrough('http://api.openweathermap.org/**');
+     this.passthrough('http://localhost:8000/**');
   },
-}); */
+});
+
+//when using the find method, it's expecting the primary key (id) to match, not the city name.
+//.findBy({ name }) and not find

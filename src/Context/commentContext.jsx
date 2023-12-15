@@ -1,5 +1,4 @@
-import { React, createContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { React, createContext, useState } from 'react';
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:8000/api/';
 
@@ -41,16 +40,15 @@ export const CommentContextProvider = ({children}) => {
             });
             console.log("user id: ", response_auth_user.data.user.id)
 
-            setComments(prevComments => ({
-                ...prevComments,
+            const commentData = {
                 id: 1, 
                 user_id: response_auth_user.data.user.id,
                 content: content.comment,
                 parent_id: null
-            }));
-            console.log("comments: ", comments)
+            }
+            console.log("comments: ", commentData)
 
-            await axios.post('comments/' + city_id, comments, {
+            await axios.post('comments/' + city_id, commentData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
@@ -83,31 +81,40 @@ export const CommentContextProvider = ({children}) => {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
             });
-            console.log('***: ' + response_comment_id.data.id);
-            setComments(prevComments => ({
-                ...prevComments,
+            //console.log('***: ' + response_comment_id.data.id);
+            
+            const commentData = {
                 id: 1, 
                 user_id: response_auth_user.data.user.id,
                 content: content.subcomment,
                 parent_id: response_comment_id.data.id
-            }));
-            console.log("comments: ", comments)
+            }
+            console.log("comments: ", commentData)
 
-            await axios.post('comments/' + city_id, comments, {
+            await axios.post('comments/' + city_id, commentData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
             });
-            console.log('****');
+            //console.log('****');
             alert('comment sent');
         } catch(err) {
-            //setErrors(err.response.data.errors);
+            setErrors(err.response.data.errors);
             console.log('error: '+ err);
         }
     }
 
+    const showingComments = async(city_id) => {
+        const response_show_comments = await axios.get('comments/' + city_id, {}, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            }
+        });
+        console.log('show comments: ', JSON.stringify(response_show_comments));
+    }
+
     return (
-        <CommentContext.Provider value={{comments, content, inputHandler, submitComment, submitReply, errors}}>
+        <CommentContext.Provider value={{comments, content, inputHandler, submitComment, submitReply, showingComments, errors}}>
             {children}
         </CommentContext.Provider>
     )
@@ -115,3 +122,12 @@ export const CommentContextProvider = ({children}) => {
 
 
 export default CommentContext;
+
+
+/* setComments(prevComments => ({
+                ...prevComments,
+                id: 1, 
+                user_id: response_auth_user.data.user.id,
+                content: content.subcomment,
+                parent_id: response_comment_id.data.id
+            })); */

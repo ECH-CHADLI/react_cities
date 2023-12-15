@@ -5,7 +5,7 @@ import Comments from '../sections/Comments'
 import "../data/cities"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Footer from '../components/Footer'
+import ForeCastCards from '../components/ForecastCards'
 //using the server 
 import "../data/server"
 
@@ -15,12 +15,12 @@ function CityPage() {
   const [cityData, setCityData] = useState(null);
   useEffect(() => {
     //i will retrieve the data from the route using id in the params for that specific city
-    fetch(`/api/cities/${params.id}`)
+    fetch(`/api/cities/${params.name}`)
       .then(res => res.json())
       .then(data => setCityData(data.city))
-      console.log("******")
+      console.log("**")
       console.log(cityData)
-  },[params.id])
+  },[params.name])
   //whenever the id changes the useEffect need to be updated
   return (
     <>
@@ -30,11 +30,10 @@ function CityPage() {
           currency={cityData.currency} timezone={cityData.timezone} language={cityData.language} culture1={cityData.culture1}
           culture2={cityData.culture2}
           />
+          <ForeCastCards cityName={cityData.name}/>
           <BestPlaces destinations={cityData.destinations}/>
           <BestDishes dishes={cityData.dishes}/>
-          {/* <Comments /> */}
-          <Comments />
-          <Footer />
+          <Comments city_id={params.name} />
         </>
       ) : <h2>Loading...</h2>}
     </>

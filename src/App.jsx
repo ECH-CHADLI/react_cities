@@ -17,11 +17,12 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<SignUpForm />} />
                     <Route path='/login' element={<Login />} />
+                    
+                    <Route path='/home' element={<HomePage />} />
                     <Route element={<ProtectedRoute />}>   
-                        <Route path='/home' element={<HomePage />} />
                         <Route path='/city/:city_id' element={<City />} />
                     </Route>
-                    <Route path='/cities/:id' element={<CityPage />} />
+                    <Route path='/cities/:name' element={<CityPage />} />
                 </Routes>
             </CommentContextProvider>
         </AuthContextProvider>
