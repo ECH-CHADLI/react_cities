@@ -1,7 +1,4 @@
-// mirageServer.js
-//import { createServer, Model } from 'miragejs';
-
-const cities = [
+export const cities = [
   {
     id: 1,
     name: "Fes",
@@ -501,33 +498,3 @@ const cities = [
   
   
 ];
-
-/* createServer({
-  models: {
-    city: Model,
-  },
-
-  seeds(server) {
-    cities.forEach(city => server.create('city', city));
-  },
-
-  routes() {
-    this.namespace = 'api';
-
-    this.get('/cities', (schema, request) => {
-      return schema.cities.all();
-    });
-
-    this.get('/cities/:name', (schema, request) => {
-      const name = request.params.name;
-      return schema.cities.findBy({name});
-    });
-
-     // Allow OpenWeatherMap API request to be forwarded to the actual API
-     this.passthrough('http://api.openweathermap.org/**');
-     this.passthrough('http://localhost:8000/api/login');
-  },
-}); */
-
-//when using the find method, it's expecting the primary key (id) to match, not the city name.
-//.findBy({ name }) and not find

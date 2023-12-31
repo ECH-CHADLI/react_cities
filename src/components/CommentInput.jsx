@@ -3,13 +3,13 @@ import CommentContext from "../Context/commentContext";
 
 const CommentInput = ({ city_id }) => { //{comment,setComment, submitted, setSubmitted}
   
-  const { comments, content, inputHandler, submitComment, errors } = useContext(CommentContext);
+  const { review, content, inputHandler, submitComment, errors } = useContext(CommentContext);
 
   return (
     <form className="flex items-stretch w-full border-collapse">
       <input 
         name="comment"
-        value={content.comment} 
+        value={review.comment} 
         onChange={inputHandler}
         type="text" placeholder="Add your comment..." 
         className="indent-3 text-sm py-3 w-full text-neutral-700 border-neutral-600 rounded-l-lg"
@@ -27,4 +27,10 @@ const CommentInput = ({ city_id }) => { //{comment,setComment, submitted, setSub
 
 export default CommentInput
 
-/* ADD TO submitComment AN ARGUMENT THAT GETS THE CITY_ID */
+/* 
+if(comments.trim() !== ""){
+                setSubmitted(true);
+                //reset the input
+                setComments(""); 
+            }
+*/

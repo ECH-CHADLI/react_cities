@@ -1,29 +1,60 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const CitiesSection = () => {
-  const slideLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 500;
+  const slide = (direction) => {
+    const slider = document.getElementById("slider");
+    const startTime = performance.now();
+    const startScroll = slider.scrollLeft;
+    const endScroll =
+      direction === "left" ? startScroll - 500 : startScroll + 500;
+    const duration = 500;
+
+    const animateScroll = (currentTime) => {
+      const elapsedTime = currentTime - startTime;
+      if (elapsedTime < duration) {
+        const scrollPosition = easeInOut(
+          elapsedTime,
+          startScroll,
+          endScroll - startScroll,
+          duration
+        );
+        slider.scrollLeft = scrollPosition;
+        requestAnimationFrame(animateScroll);
+      } else {
+        slider.scrollLeft = endScroll; // Ensure final position is set
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
   };
 
-  const slideRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 500;
+  // Easing function for smoother animation
+  const easeInOut = (t, b, c, d) => {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
   };
+
+  const handleViewCountryClick = (countryName) => {
+    window.location.href = `/country/${countryName}`;
+    
+  }
 
   return (
-    <>
+    <div className="my-8">
       <p className="my-8 mx-6 text-2xl text-blue-600 font-bold text-center">
         Discover enchanting destinations grouped by country. Your next adventure
         is just a click away!
       </p>
-      <div className="relative flex items-center justify-center mb-32 h-[350px] ">
+      <div className="relative flex items-center justify-center h-[350px]">
         <MdChevronLeft
-          onClick={slideLeft}
+          onClick={() => slide("left")}
           size={40}
           className="cursor-pointer opacity-20 hover:opacity-50"
         />
         <div
+          style={{ scrollBehavior: "smooth" }}
           id="slider"
           className=" w-[90%] max-w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide"
         >
@@ -39,19 +70,19 @@ const CitiesSection = () => {
               <h2 className="float-left text-white text-2xl font-bold pl-2">
                 {country.name}
               </h2>
-              <button className="absolute bottom-2 right-2 bg-[#F5F5F5] px-3 py-1.5 rounded-xl text-md font-semibold mb-1 mr-2 hover:bg-[steelblue] hover:text-[#F5F5F5] hover:ease-in-out duration-500">
+              <button onClick={() => handleViewCountryClick(country.name)} className="absolute bottom-2 right-2 bg-[#F5F5F5] px-3 py-1.5 rounded-xl text-md font-semibold mb-1 mr-2 hover:bg-[steelblue] hover:text-[#F5F5F5] hover:ease-in-out duration-500">
                 View
               </button>
             </div>
           ))}
         </div>
         <MdChevronRight
-          onClick={slideRight}
+          onClick={() => slide("right")}
           size={40}
           className="cursor-pointer opacity-20 hover:opacity-50"
         />
       </div>
-    </>
+    </div>
   );
 };
 

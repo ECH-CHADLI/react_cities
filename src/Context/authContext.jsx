@@ -15,7 +15,6 @@ export const AuthContextProvider = ({children}) => {
     });
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    //const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         // Read the authentication state from localStorage on component mount
         return localStorage.getItem('authToken') !== null;
@@ -71,6 +70,7 @@ export const AuthContextProvider = ({children}) => {
             if(err.response.status === 422) { 
                 setErrors(err.response.data.errors); 
             }
+            console.error("error: " + err)
         }
     }
 

@@ -57,7 +57,7 @@ const ForeCastCards = ({ cityName }) => {
 
   if (loading)
     return (
-      <div className="flex flex-row gap-2 justify-center items-center">
+      <div className="flex flex-row gap-2 justify-center items-center my-10">
         <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
         <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
         <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
@@ -65,8 +65,10 @@ const ForeCastCards = ({ cityName }) => {
     );
   if (foreCast)
     return (
-      <div className=" forecast-cards-container flex justify-center items-center gap-5 mx-20">
-        {foreCast.map((element) => (
+      <div className="mb-16 scrollbar-hide">
+      <div className="text-3xl font-bold py-10 ml-8">This is the  <span className="uppercase">weather forecast </span>for the next six days</div>
+        <div className=" forecast-cards-container flex justify-center items:start md:items-center gap-5 mx-20">
+          {foreCast.map((element) => (
           <ForecastCard
             key={element.dt}
             date={element.dt_txt.split(" ")[0]}
@@ -76,6 +78,7 @@ const ForeCastCards = ({ cityName }) => {
             wind={element.wind.speed}
           />
         ))}
+      </div>
       </div>
     );
 };

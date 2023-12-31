@@ -50,9 +50,7 @@ const CityMap = ({ cityName }) => {
     initializeMap();
   }, [cityName]);
 
-  return (
-    <div id="map" className="h-[300px] w-1/2 mx-6 my-20 rounded-lg"></div>
-  );
+  return <div id="map" className="h-[300px] w-1/2 mx-6 my-20 rounded-lg"></div>;
 };
 
 CityMap.propTypes = {

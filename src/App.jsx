@@ -8,6 +8,8 @@ import {CommentContextProvider} from './Context/commentContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './Pages/Login';
 import CityPage from './Pages/CityPage';
+import CountryPage from './Pages/CountryPage';
+import AboutPage from './Pages/AboutPage';
 
 export default function App() {
   return (
@@ -17,12 +19,15 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<SignUpForm />} />
                     <Route path='/login' element={<Login />} />
-                    
-                    <Route path='/home' element={<HomePage />} />
+
                     <Route element={<ProtectedRoute />}>   
-                        <Route path='/city/:city_id' element={<City />} />
+                        <Route path='/home' element={<HomePage />} />
+                        {/* <Route path='/city/:city_id' element={<City />} /> */}
+                        <Route path='/cities/:city_id' element={<CityPage />} />
+                        <Route path='/country/:country_name' element={<CountryPage />} />
+                        <Route path='/about' element={<AboutPage />} />
                     </Route>
-                    <Route path='/cities/:name' element={<CityPage />} />
+
                 </Routes>
             </CommentContextProvider>
         </AuthContextProvider>

@@ -6,27 +6,20 @@ const CommentContext = createContext();
 
 export const CommentContextProvider = ({children}) => {
 
-    const [comments, setComments] = useState({
-        id: null,
-        user_id: null,
-        content: "",
-        parent_id: null
-    });
-
-    const [content, setContent] = useState({
+    const [review, setReview] = useState({
         comment: "",
-        subcomment: ""
+        //subcomment: {}
     });
 
     const [errors, setErrors] = useState({});
-
-    //const { city_id } = useParams();
+    
+    const [commentId, setCommentId] = useState(null);
 
     // onChange function for a comment and a reply
     const inputHandler = (event) => {
         const { name, value } = event.target;
-        setContent({...content, [name]: value});
-        console.log(content);
+        setReview({...review, [name]: value});
+        console.log(review);
     }
 
     // submitting a comment or reply
@@ -43,7 +36,7 @@ export const CommentContextProvider = ({children}) => {
             const commentData = {
                 id: 1, 
                 user_id: response_auth_user.data.user.id,
-                content: content.comment,
+                content: review.comment,
                 parent_id: null
             }
             console.log("comments: ", commentData)
@@ -59,11 +52,6 @@ export const CommentContextProvider = ({children}) => {
             //setErrors(err.response.data.errors);
             console.log('error: '+ err);
         }
-        /* if(comments.trim() !== ""){
-            setSubmitted(true);
-            //reset the input
-            setComments(""); 
-        } */
     }
 
     async function submitReply(event, city_id, comment_id){
@@ -81,12 +69,11 @@ export const CommentContextProvider = ({children}) => {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
             });
-            //console.log('***: ' + response_comment_id.data.id);
             
             const commentData = {
                 id: 1, 
                 user_id: response_auth_user.data.user.id,
-                content: content.subcomment,
+                content: review[`subcomment-${response_comment_id.data.id}`],
                 parent_id: response_comment_id.data.id
             }
             console.log("comments: ", commentData)
@@ -96,7 +83,9 @@ export const CommentContextProvider = ({children}) => {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
                 }
             });
-            //console.log('****');
+
+            //localStorage.setItem(`subcomment-${commentData.id}`, `subcomment-${commentData.id}`);
+
             alert('comment sent');
         } catch(err) {
             setErrors(err.response.data.errors);
@@ -105,16 +94,32 @@ export const CommentContextProvider = ({children}) => {
     }
 
     const showingComments = async(city_id) => {
-        const response_show_comments = await axios.get('comments/' + city_id, {}, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
-            }
-        });
-        console.log('show comments: ', JSON.stringify(response_show_comments));
+        try {
+            const response_show_comments = await axios.get('comments/get/' + city_id, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                }
+            });
+            const formattedComments = response_show_comments.data.map(comment => ({
+                id: comment.id,
+                user: comment.user.name, 
+                content: comment.content,
+                parent_id: comment.parent_id,
+                subcomments: comment.subcomments.length !== 0 ? comment.subcomments.map(subcomment => ({
+                    id: subcomment.id,
+                    user: subcomment.user.name, 
+                    content: subcomment.content,
+                })) : []
+            }));
+            //console.log('formatted subs: ', JSON.stringify(formattedComments[4].subcomments))
+            return formattedComments;
+        } catch (e) {
+            console.error('error in formatting comments: ', e);
+        }
     }
 
     return (
-        <CommentContext.Provider value={{comments, content, inputHandler, submitComment, submitReply, showingComments, errors}}>
+        <CommentContext.Provider value={{review, inputHandler, submitComment, submitReply, showingComments, commentId, errors}}>
             {children}
         </CommentContext.Provider>
     )
