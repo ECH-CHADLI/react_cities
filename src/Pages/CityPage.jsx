@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ForeCastCards from "../components/ForecastCards";
 import { cities } from "../data/city";
-//using the server
-//import "../data/server"
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer-may";
+
 
 function CityPage() {
-  //using the param from the route
-  //using the param from the route
+  
   const { city_id } = useParams();
   const [cityData, setCityData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -50,6 +50,7 @@ function CityPage() {
   if (cityData)
     return (
       <>
+        <Navbar />
         <City
           id={cityData.id}
           name={cityData.name}
@@ -64,6 +65,7 @@ function CityPage() {
         <BestPlaces destinations={cityData.destinations} />
         <BestDishes dishes={cityData.dishes} />
         <Comments city_id={city_id} />
+        <Footer />
       </>
     );
 }

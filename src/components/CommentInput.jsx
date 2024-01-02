@@ -1,9 +1,9 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext } from "react";
 import CommentContext from "../Context/commentContext";
 
 const CommentInput = ({ city_id }) => { //{comment,setComment, submitted, setSubmitted}
   
-  const { review, content, inputHandler, submitComment, errors } = useContext(CommentContext);
+  const { review, inputHandler, submitComment } = useContext(CommentContext);
 
   return (
     <form className="flex items-stretch w-full border-collapse">

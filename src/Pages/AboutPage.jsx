@@ -1,4 +1,6 @@
 import React from 'react'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer-may';
 
 const AboutPage = () => {
   const data = [
@@ -35,7 +37,8 @@ const AboutPage = () => {
       </div>
     </div>
   ));
-  return (
+  return ( <>
+    <Navbar />
     <div className="w-11/12 md:w-[60%]  mx-auto">
       <div className="flex flex-col items-center my-10">
         <div className="text-4xl font-bold mb-6 relative inline-block">
@@ -50,7 +53,8 @@ const AboutPage = () => {
         Embark on a virtual odyssey with us &ndash; your gateway to the world awaits. [Your Website Name] is where your global adventure begins. <span className='bold italic'>Bon voyage!</span>
       </div>
     </div>
-
+    <Footer/> 
+    </>
   )
 }
 

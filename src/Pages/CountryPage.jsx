@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { cities } from "../data/city";
 import { useState, useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer-may";
 
 const CountryPage = () => {
   const countryName = useParams();
@@ -32,8 +34,9 @@ const CountryPage = () => {
     window.location.href = `/cities/${cityName}`;
   }
 
-  return (
-    <div className="flex gap-10 mx-10 my-5">
+  return ( <>
+    <Navbar />
+    <div className="grid grid-cols-4 gap-5 mx-10 my-5 mt-20 mb-20">
       {citiesData.map((city) => (
         <div
           key={city.name}
@@ -41,7 +44,7 @@ const CountryPage = () => {
             backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${city.destinations[0].image})`,
             backgroundSize: "cover",
           }}
-          className="city h-64 w-1/2 text-white flex flex-col p-5 relative rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
+          className="city h-64 w-4/8 text-white flex flex-col p-5 relative rounded-xl shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]"
         >
           <h2 className="text-2xl font-bold mb-7">{city.name}</h2>
           <p className="text-white font-semibold">
@@ -53,7 +56,8 @@ const CountryPage = () => {
           </button>
         </div>
       ))}
-    </div>
+    </div> 
+    <Footer /> </>
   );
 };
 

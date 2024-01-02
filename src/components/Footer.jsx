@@ -1,44 +1,45 @@
-import React from 'react'
-import InfoFooter from './InfoFooter';
+import React from 'react';
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaPinterest,
+  FaYoutube,
+} from 'react-icons/fa';
 
 const Footer = () => {
-    const infoFooter = [
-        {
-            h1: "Company",
-            text1: "About us",
-            text2: "here",
-            text3: "flick"
-        },
-        {
-            h1: "Online",
-            text1: "About us",
-            text2: "here",
-            text3: "flick" ,
-            text4:"clip"
-        },
-        {
-            h1: "Blocks",
-            text1: "About us",
-            text2: "here",
-            text3: "flick"
-        }
-    ]
-    const icons = { h1: "Socials", facebook: "https://img.icons8.com/?size=50&id=106163&format=png", instagram: "https://img.icons8.com/?size=30&id=59813&format=png", linkedin: "https://img.icons8.com/?size=30&id=98960&format=png"}
-    return (
-      <footer className="bg-gray-800 text-white p-4 flex">
-        <div className="flex flex-col justify-start items-start w-full overflow-hidden">
-            <InfoFooter titles={infoFooter} icons={icons} />
-            <div className='flex justify-center w-full'>
-                <span className="bg-pink-100 h-[1px] w-[300px] mt-5 mb-2.5"></span>
-            </div>
-            <div className="container mx-auto text-center">
-                <p className="text-sm sm:text-base lg:text-lg">
-                    &copy; 2023 Your Destination Explorer
-                </p>
-            </div>
+  return (
+    <div className='w-full bg-gray-100 py-16'>
+      <div className='max-w-[1240px] mx-auto flex flex-col px-4'>
+        <div className='sm:flex text-center justify-between items-center'>
+          <h1>CITIES.</h1>
+          <div className='flex justify-between w-full sm:max-w-[280px] my-4'>
+            <FaFacebook className='icon' />
+            <FaTwitter className='icon' />
+            <FaYoutube className='icon' />
+            <FaPinterest className='icon' />
+            <FaInstagram className='icon' />
+          </div>
         </div>
-      </footer>
-    );
+        <div className='flex justify-between'>
+          <ul className='lg:flex'>
+            <li>About</li>
+            <li>Culture</li>
+            <li>Food</li>
+            <li>Newsroom</li>
+            <li>Advertising</li>
+          </ul>
+          <ul className='text-right lg:flex'>
+            <li>Home</li>
+            <li>Destinations</li>
+            <li>Travel</li>
+            <li>View</li>
+            <li>Book</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
-  
+
 export default Footer;

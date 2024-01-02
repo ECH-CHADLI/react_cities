@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { cities } from '../data/city';
 
 const SearchBar = () => {
@@ -56,7 +56,7 @@ const SearchBar = () => {
       {/* Dropdown list */}
       {isDropdownVisible && (
         <ul className="absolute top-11 z-10 left-0 w-full bg-white border border-gray-300 rounded-md shadow-md overflow-hidden">
-          { value == "" ? 
+          { value === "" ? 
            cities.map((city) => (
             <li
             key={city.id}

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Noto+Sans:wght@500&family=Quicksand:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;600;700&family=Karla:wght@300&family=Poppins:wght@300;500;600&display=swap');
 
 body {
   margin: 0;
@@ -13,4 +14,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+/* Add these styles to your CSS or Tailwind CSS configuration */
+.input-style {
+  @apply bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+.button-style {
+  @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+
+
+.trippy {
+  font-family: 'Chewy', cursive;
+  font-size: 28px;
 }

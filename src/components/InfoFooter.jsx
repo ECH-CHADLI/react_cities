@@ -22,9 +22,9 @@ export default function InfoFooter({ titles, icons }) {
               <span className="block absolute left-0 bottom--3 bg-pink-500 w-12 h-0.5 mt-0.5"></span>
             </h1>
             <div className="flex justify-start space-x-10">
-              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-red-300 hover:bg-red-800 color-white" src={icons.facebook} alt='facebook' />
-              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-gray-200 hover:bg-gray-300" src={icons.instagram} alt='instagram' />
-              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-gray-200 hover:bg-gray-300" src={icons.linkedin} alt='linkedin' />
+              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-gray-200 hover:bg-gray-500 color-white" src={icons.facebook} alt='facebook' />
+              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-gray-200 hover:bg-gray-500" src={icons.instagram} alt='instagram' />
+              <img className="w-7 h-7 transition-colors duration-300 ease-linear delay-100 rounded-full bg-gray-200 hover:bg-gray-500" src={icons.linkedin} alt='linkedin' />
             </div>
         </div>
     </div>

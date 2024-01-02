@@ -3,13 +3,14 @@ import { Routes, Route } from 'react-router-dom'
 import SignUpForm from './Pages/signUp'
 import HomePage from './Pages/HomePage';
 import { AuthContextProvider } from './Context/authContext';
-import City from './Pages/City';
 import {CommentContextProvider} from './Context/commentContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './Pages/Login';
 import CityPage from './Pages/CityPage';
 import CountryPage from './Pages/CountryPage';
 import AboutPage from './Pages/AboutPage';
+import AuthPage from './Pages/AuthPage';
+import LandingPage from './Pages/LandingPage';
 
 export default function App() {
   return (
@@ -17,8 +18,10 @@ export default function App() {
         <AuthContextProvider>
             <CommentContextProvider>
                 <Routes>
-                    <Route path='/' element={<SignUpForm />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path='/authentification' element={<AuthPage />} />
+                    {/* <Route path='/' element={<SignUpForm />} />
+                    <Route path='/login' element={<Login />} /> */}
 
                     <Route element={<ProtectedRoute />}>   
                         <Route path='/home' element={<HomePage />} />

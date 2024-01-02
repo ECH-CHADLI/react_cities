@@ -13,8 +13,10 @@ export const AuthContextProvider = ({children}) => {
         password: "",
         password_confirmation: ""
     });
+
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
+
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
         // Read the authentication state from localStorage on component mount
         return localStorage.getItem('authToken') !== null;
@@ -34,16 +36,16 @@ export const AuthContextProvider = ({children}) => {
             const authName = response.data.user.name;
             const authToken = response.data.token;
             localStorage.setItem('authName', authName);
-            localStorage.getItem('authToken', authToken);
+            localStorage.setItem('authToken', authToken);
             console.log(authName);
 
             setIsAuthenticated(true);
             navigate("/home");
         } catch(err) {
-            //console.error('Registration Error:', err); // Add this line
-            if(err.response.status === 422) { // 422 status code: the server can't porcess the request, although it understands it
-                setErrors(err.response.data.errors); // comes from an Axios error object. Meaning from laravel!
-            }
+            
+            console.error(err.response.data.errors)
+            // 422 status code: the server can't porcess the request, although it understands it
+            setErrors(err.response.data.errors); // comes from an Axios error object. Meaning from laravel!
         }
     }
 
@@ -67,10 +69,7 @@ export const AuthContextProvider = ({children}) => {
             setIsAuthenticated(true);
             navigate("/home");
         } catch(err) {
-            if(err.response.status === 422) { 
-                setErrors(err.response.data.errors); 
-            }
-            console.error("error: " + err)
+            setErrors(err.response.data.errors); 
         }
     }
 

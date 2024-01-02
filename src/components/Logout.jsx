@@ -7,7 +7,7 @@ export default function Logout() {
 
   return (
     <form onSubmit={logout}>
-      <button>Logout</button>
+      <button className='text-white'>Logout</button>
     </form>
   )
 }
