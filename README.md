@@ -36,6 +36,11 @@ The provider:
 
 ![Routing](https://github.com/ECH-CHADLI/react_cities/assets/118133139/f7c44a0d-b13a-4498-b69d-283f5dda5fe0)
 
+### Protecting routes
+
+![image](https://github.com/ECH-CHADLI/react_cities/assets/118133139/17b7e37d-7278-4501-b4ae-0f1793a73afa)
+
+
 ---
 
 # External APIs
