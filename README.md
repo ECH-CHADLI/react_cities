@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# React Components and Styling
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We utilized Tailwind CSS for styling our components.
 
-## Available Scripts
+![Pages](https://github.com/ECH-CHADLI/react_cities/assets/118133139/d1a587d2-8eeb-4b9c-a396-b50048065648)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+# Context
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Context](https://github.com/ECH-CHADLI/react_cities/assets/118133139/06ba3aef-b31a-4f1d-a620-31ca3fc709e8)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## authContext Functions: Register, Login, Logout
 
-### `npm test`
+An example of the login function:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Login](https://github.com/ECH-CHADLI/react_cities/assets/118133139/510a5412-0145-4155-8979-cfa568228f66)
 
-### `npm run build`
+Values within our context provider:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Provider](https://github.com/ECH-CHADLI/react_cities/assets/118133139/c4def278-713e-4d7c-bb18-8d78ec042313)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## commentContext Functions: SubmitComment, SubmitReply, ShowingComments
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+An example of the submitComment function using Axios:
 
-### `npm run eject`
+![Submit Comment](https://github.com/ECH-CHADLI/react_cities/assets/118133139/afd056ff-b3ae-499a-8f33-5d950b2dc8c7)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The provider:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Comment Provider](https://github.com/ECH-CHADLI/react_cities/assets/118133139/12f5bc78-24f8-408e-b606-e2f00faec71f)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Routing with react-router-dom
 
-## Learn More
+![Routing](https://github.com/ECH-CHADLI/react_cities/assets/118133139/f7c44a0d-b13a-4498-b69d-283f5dda5fe0)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# External APIs
