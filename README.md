@@ -39,3 +39,19 @@ The provider:
 ---
 
 # External APIs
+
+1. **OpenWeatherMap Geocoding API:**
+   We used this API to obtain precise city coordinates by inputting the city name, facilitating accurate mapping and location-based services.
+   
+![geocoding](https://github.com/ECH-CHADLI/react_cities/assets/114262432/368623ab-cedc-4ff3-907c-d091922ca577)
+
+2. **OpenWeatherMap Weather API:**
+   Used to retrieve real-time weather data for a given city, offering up-to-date and relevant information.
+   
+![weather](https://github.com/ECH-CHADLI/react_cities/assets/114262432/9e2fdb83-6376-401a-a77b-ddadbe2e7f1e)
+
+3. **Leaflet API:**
+   Used to integrate an interactive map component into the web app for visual representation of the city, enhancing user experience and geospatial context.
+   
+![map_screenShot1](https://github.com/ECH-CHADLI/react_cities/assets/114262432/579edf76-f08d-4a7b-b20d-5e816f18e039)
+![map_screenShot2](https://github.com/ECH-CHADLI/react_cities/assets/114262432/b40b5358-3489-46d2-b5ed-238acb266ac7)
