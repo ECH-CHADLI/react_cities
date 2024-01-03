@@ -23,7 +23,7 @@ We utilized Tailwind CSS for styling our components.
 
 ## authContext Functions: Register, Login, Logout
 
-An example of the login function, we utilized axios for communication with back (default axios url: http://localhost:8000/api/):
+An example of the login function, we utilized axios for communication with the backend api (default axios url: http://localhost:8000/api/):
 
 ![Login](https://github.com/ECH-CHADLI/react_cities/assets/118133139/510a5412-0145-4155-8979-cfa568228f66)
 
